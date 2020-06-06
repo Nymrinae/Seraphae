@@ -1,13 +1,10 @@
-<img
-  style="float: right; border-radius: 50%; margin-top: 2%"
-  src="https://cdn.discordapp.com/avatars/708752020550451310/5fc13d7afbdfda3eeb29db960a846e85.webp">
-# Seraphae
+# Seraphae <img src="https://bit.ly/2XDerPN" align="right">
 
 <i>"No matter how hard or impossible it is, never lose sight of your goal"</i>
 
 ## Table of Contents
  - [Requirements](#requirements)
- - [Getting Started](#gettingstarted)
+ - [Getting Started](#getting-started)
  - [Features](#features)
  - [Documentation](#documentation)
  - [FAQ](#faq)
@@ -55,6 +52,10 @@ Seraphae has multiples features with 6 categories :
 W.I.P
 
 ### FAQ
+
+W.I.P
+
+### Support
 
 W.I.P
 
