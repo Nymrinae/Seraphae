@@ -18,13 +18,14 @@ export default class Seraphae extends CommandoClient {
       .registerGroups([
         ['bot', 'Bot information'],
         ['games', 'Games related commands'],
-        ['info', 'Information related commands'],
-        ['misc', 'Miscellaneous commands'],
+        ['information', 'Information related commands'],
+        ['miscellaneous', 'Miscellaneous commands'],
         ['music', 'Music related commands'],
         ['moderation', 'Moderation commands']
       ])
       .registerDefaultGroups()
       .registerDefaultCommands({
+        help: false,
         ping: false,
         prefix: false,
         unknownCommand: false
@@ -41,7 +42,7 @@ export default class Seraphae extends CommandoClient {
     for (const eventName in events) {
       const event = events[eventName]
 
-      super.on(eventName, () => event.run())
+      super.on(eventName, (...args: Array<any>) => event.run(args))
     }
   }
 

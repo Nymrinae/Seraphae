@@ -6,9 +6,10 @@ export default class TestCommand extends SeraphaeCommand {
   constructor(client: Seraphae) {
     super(client, {
       name: 'test',
-      group: 'misc',
+      group: 'miscellaneous',
       memberName: 'test',
       description: 'test command',
+      hidden: true,
       examples: ['test']
     })
   }

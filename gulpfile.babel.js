@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import gulpTS from 'gulp-typescript'
 import gulpSourcemaps from 'gulp-sourcemaps'
 import gulpNodemon from 'gulp-nodemon'
+import gulpChanged from 'gulp-changed'
 
 import del from 'del';
 import path from 'path';
@@ -35,5 +36,5 @@ gulp.task('serve', gulp.parallel(['watch'], () => {
     return gulpNodemon({
         script: './build/index.js',
         watch: './build/'
-    });
+    })
 }));

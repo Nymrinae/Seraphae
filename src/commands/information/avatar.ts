@@ -6,7 +6,7 @@ export default class AvatarCommand extends SeraphaeCommand {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'avatar',
-      group: 'info',
+      group: 'information',
       memberName: 'avatar',
       description: 'Display avatar of the user mentioned.',
       examples: ['avatar'],

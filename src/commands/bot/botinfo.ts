@@ -8,7 +8,7 @@ export default class BotInfoCommand extends SeraphaeCommand {
       name: 'botinfo',
       aliases: ['bi'],
       group: 'bot',
-      memberName: 'botinfo',
+      memberName: 'bot information',
       description: 'Display bot\'s information',
       examples: ['botinfo']
     })

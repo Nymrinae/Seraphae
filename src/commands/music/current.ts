@@ -9,7 +9,8 @@ export default class CurrentCommand extends SeraphaeCommand {
       aliases: ['currentsong'],
       group: 'music',
       memberName: 'current',
-      description: 'Show the current song'
+      description: 'Show the current song',
+      examples: ['current']
     })
   }
 

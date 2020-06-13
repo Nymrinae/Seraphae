@@ -9,7 +9,7 @@ export default class ServerInfoCommand extends SeraphaeCommand {
     super(client, {
       name: 'serverinfo',
       aliases: ['si'],
-      group: 'info',
+      group: 'information',
       memberName: 'serverinfo',
       description: 'Display server informations',
       examples: ['serverinfo', 'si']

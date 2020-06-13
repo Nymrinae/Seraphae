@@ -66,8 +66,7 @@ export default class TicTacToeCommand extends Game {
     if (initialState) {
       // @ts-ignore
       this.playground = await this.msg.say(playground)
-    }
-    else {
+    } else {
       this.playground.edit(playground)
     }
   }

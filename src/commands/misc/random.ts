@@ -5,7 +5,7 @@ export default class RandomCommand extends SeraphaeCommand {
   constructor(client: CommandoClient) {
     super(client, {
       name: 'random',
-      group: 'misc',
+      group: 'miscellaneous',
       memberName: 'random',
       description: 'Display random value of an array',
       examples: ['random'],

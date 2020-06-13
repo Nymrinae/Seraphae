@@ -8,7 +8,7 @@ export default class UserInfoCommand extends SeraphaeCommand {
     super(client, {
       name: 'userinfo',
       aliases: ['ui'],
-      group: 'info',
+      group: 'information',
       memberName: 'userinfo',
       description: 'Display user informations',
       examples: ['userinfo', 'ui'],

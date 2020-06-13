@@ -5,10 +5,10 @@ export default class ClearCommand extends SeraphaeCommand {
   constructor(client: any) {
     super(client, {
       name: 'clear',
-      aliases: ['clear', 'skipall'],
       group: 'music',
       memberName: 'clear',
-      description: 'Clear queue'
+      description: 'Clear queue',
+      examples: ['clear']
     })
   }
 
