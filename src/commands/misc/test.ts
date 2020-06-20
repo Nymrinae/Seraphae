@@ -1,6 +1,8 @@
 import { CommandoMessage } from 'discord.js-commando'
 import Seraphae from '../../core/Client'
 import SeraphaeCommand from '../../core/Command'
+import { Guild } from 'discord.js'
+import axios from 'axios'
 
 export default class TestCommand extends SeraphaeCommand {
   constructor(client: Seraphae) {
@@ -14,7 +16,7 @@ export default class TestCommand extends SeraphaeCommand {
     })
   }
 
-  run = (msg: CommandoMessage) => {
-    return msg.say((this.client as Seraphae).test())
+  // @ts-ignore
+  run = async (msg: CommandoMessage) => {
   }
 }

@@ -1,10 +1,13 @@
 import { CommandoClient, CommandoClientOptions } from 'discord.js-commando'
 import path from 'path'
 import requireAll from 'require-all'
+import Logger from './Logger'
 import { I18nResolver } from 'i18n-ts'
 import { fr, en } from '../locales'
 
 export default class Seraphae extends CommandoClient {
+  public logger: Logger
+
   constructor(options: CommandoClientOptions) {
     super(options)
 
@@ -46,6 +49,8 @@ export default class Seraphae extends CommandoClient {
     }
   }
 
+  public setLogger = (): Logger => this.logger = new Logger(this)
+
   /* public configureI18n = (): void => {
     const i18n = {
       fr,
@@ -57,7 +62,5 @@ export default class Seraphae extends CommandoClient {
   } */
   public test = () => `test`
 
-  public login = (token: string): Promise<string> => {
-    return super.login(token)
-  }
+  public login = (token: string): Promise<string> => super.login(token)
 }

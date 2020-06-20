@@ -30,4 +30,5 @@ const client = new Seraphae({
   owner: botConfig.ownerID
 })
 
+client.setLogger()
 client.login(botConfig.token)
