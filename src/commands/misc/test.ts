@@ -1,9 +1,6 @@
 import { CommandoMessage } from 'discord.js-commando'
 import Seraphae from '../../core/Client'
 import SeraphaeCommand from '../../core/Command'
-import { Guild } from 'discord.js'
-import axios from 'axios'
-
 export default class TestCommand extends SeraphaeCommand {
   constructor(client: Seraphae) {
     super(client, {
@@ -18,5 +15,9 @@ export default class TestCommand extends SeraphaeCommand {
 
   // @ts-ignore
   run = async (msg: CommandoMessage) => {
+    this.client.emit('guildMemberAdd', msg.member)
+    this.client.emit('guildMemberRemove', msg.member)
+    this.client.emit('guildBanAdd', msg.guild, msg.author)
+    this.client.emit('guildBanRemove', msg.guild, msg.author)
   }
 }

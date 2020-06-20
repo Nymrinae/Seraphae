@@ -45,7 +45,7 @@ export default class Seraphae extends CommandoClient {
     for (const eventName in events) {
       const event = events[eventName]
 
-      super.on(eventName, (...args: Array<any>) => event.run(args))
+      super.on(eventName, (...args: any) => event.run(...args))
     }
   }
 

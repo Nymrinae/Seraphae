@@ -8,7 +8,7 @@ export default class MessageDeleteEvent {
     this.client = client
   }
 
-  public run = async (msg: CommandoMessage): Promise<any> => {
-    this.client.logger.messageDeleted(msg[0])
+  public run = (msg: CommandoMessage): void => {
+    this.client.logger.messageDeleted(msg)
   }
 }
