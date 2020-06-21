@@ -9,6 +9,6 @@ export default class MessageDeleteEvent {
   }
 
   public run = (msg: CommandoMessage): void => {
-    this.client.logger.messageDeleted(msg)
+    this.client.logger.logDeletedMessage(msg)
   }
 }

@@ -1,7 +1,7 @@
 import Seraphae from "./Client";
 import { memberUpdateType, LoggerOptions } from '../models/types/LoggerTypes'
 import { CommandoMessage } from "discord.js-commando"
-import { MessageEmbed, TextChannel, GuildMember, Message, Role, User } from "discord.js"
+import { Guild, GuildMember, Message, MessageEmbed, Role, TextChannel, User } from "discord.js"
 
 export default class Logger {
   private client: Seraphae
@@ -10,16 +10,11 @@ export default class Logger {
   constructor(client: Seraphae) {
     this.client = client
     this.options = {
-        userLog: 'mudae-crf',
-        msgLog: 'mudae-crf',
-        modLog: 'mudae-crf'
+      guildLog: 'mudae-crf',
+      msgLog: 'mudae-crf',
+      modLog: 'mudae-crf',
+      userLog: 'mudae-crf'
     }
-
-    /*
-      user-log: guildMemberAdd | guildMemberUpdate
-      msg-log: messageDelete
-      mod-log: guildBanAdd | guildMemberRemove
-    */
   }
 
   private getChannel = (logType: string, msg?: CommandoMessage): TextChannel => {
@@ -38,12 +33,29 @@ export default class Logger {
     return (simpleChannel as TextChannel)
   }
 
-  public logGuildBanState = (_: void, user: User, banned: boolean): void => {
+  public logNewGuildState = (guild: Guild, newGuild: boolean): void => {
+    const channel: TextChannel = this.getChannel(this.options.modLog)
+    const guildJoinEmbed = new MessageEmbed()
+      .setTitle(`${newGuild ? 'Joined guild' : 'Left guild'}`)
+      .setThumbnail(guild.iconURL())
+      .setDescription([
+        `**Name:** ${guild.name}`,
+        `**ID:** ${guild.id}`,
+        `**Owner ID:** ${guild.ownerID}`,
+        `**MemberCount:** ${guild.memberCount}`
+      ].join('\n'))
+      .setColor(newGuild ? '#00FF00' : '#FF0000')
+      .setTimestamp()
+
+    channel.send(guildJoinEmbed)
+  }
+
+  public logGuildBanState = (_: Guild, user: User, banned: boolean): void => {
     const channel: TextChannel = this.getChannel(this.options.modLog)
     const logGuildBanStateEmbed = new MessageEmbed()
       .setTitle(`${banned ? 'Banned' : 'Unbanned'} from guild`)
-      .setColor(`${banned ? '#FF0000' : '#00FF00'}`)
-      .setAuthor(`${user.tag}`, user.avatarURL())
+      .setColor(banned ? '#FF0000' : '#00FF00')
+      .setAuthor(user.tag, user.avatarURL())
       .setDescription([`**Discord ID**: ${user.id}`, `**Username**: ${user.tag}`].join('\n'))
       .setTimestamp()
 
@@ -53,8 +65,8 @@ export default class Logger {
   public logMemberJoinState = (member: GuildMember, joined: boolean): void => {
     const channel: TextChannel = this.getChannel(this.options.userLog)
     const guildMemberAddEmbed = new MessageEmbed()
-      .setTitle(`${joined ? 'New Member' : 'Member left'}`)
-      .setColor(`${joined ? '#00FF00' : '#FF0000'}`)
+      .setTitle(joined ? 'New Member' : 'Member left')
+      .setColor(joined ? '#00FF00' : '#FF0000')
       .setThumbnail(member.user.avatarURL())
       .setDescription([
         `**Discord ID**: ${member.user.id}`,
@@ -65,13 +77,12 @@ export default class Logger {
     channel.send(guildMemberAddEmbed)
   }
 
-  public guildMemberUpdate = (oldMember: GuildMember, newMember: GuildMember): any => {
+  public logGuildMemberUpdate = (oldMember: GuildMember, newMember: GuildMember): void => {
     const channel: TextChannel = this.getChannel(this.options.userLog)
 
     if (!channel) return
 
     let updateType: memberUpdateType
-    // roles changes
     let addedRole: Role = undefined
     let removedRole: Role = undefined
 
@@ -95,7 +106,6 @@ export default class Logger {
       return true
     })
 
-    // name changes
     if (oldMember.user.username != newMember.user.username)
       updateType = memberUpdateType.USERNAME
     if (oldMember.nickname != newMember.nickname)
@@ -141,10 +151,10 @@ export default class Logger {
     }
 
     if (updateType != memberUpdateType.NONE)
-      return channel.send(guildMemberUpdateEmbed)
+      channel.send(guildMemberUpdateEmbed)
   }
 
-  public messageDeleted = (msg: CommandoMessage): Promise<Message> => {
+  public logDeletedMessage = (msg: CommandoMessage): Promise<Message> => {
     const channel = this.getChannel(this.options.msgLog, msg)
 
     if (!channel)

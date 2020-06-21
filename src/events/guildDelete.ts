@@ -1,7 +1,7 @@
 import Seraphae from '../core/Client'
-import { Guild, MessageEmbed, TextChannel, Channel } from 'discord.js'
+import { Guild  } from 'discord.js'
 
-export default class GuildCreateEvent {
+export default class GuildDeleteEvent {
   private client: Seraphae
 
   constructor(client: Seraphae) {
@@ -9,6 +9,6 @@ export default class GuildCreateEvent {
   }
 
   public run = (guild: Guild): void => {
-    this.client.logger.logNewGuildState(guild, true)
+    this.client.logger.logNewGuildState(guild, false)
   }
 }

@@ -9,6 +9,6 @@ export default class GuildMemberUpdateEvent {
   }
 
   public run = (oldMember: GuildMember, newMember: GuildMember): any => {
-    this.client.logger.guildMemberUpdate(oldMember, newMember)
+    this.client.logger.logGuildMemberUpdate(oldMember, newMember)
   }
 }

@@ -1,5 +1,5 @@
 const botConfig = {
-  prefix: 'st%',
+  prefix: process.env.NODE_ENV === 'dev' ? 'st%' : 's%',
   token: process.env.TOKEN,
   ownerID: process.env.OWNER_ID
 }

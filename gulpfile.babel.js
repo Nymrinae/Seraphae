@@ -2,23 +2,21 @@ import gulp from 'gulp'
 import gulpTS from 'gulp-typescript'
 import gulpSourcemaps from 'gulp-sourcemaps'
 import gulpNodemon from 'gulp-nodemon'
-import gulpChanged from 'gulp-changed'
+import gulpCached from 'gulp-cached'
 
-import del from 'del';
-import path from 'path';
-
-const project = gulpTS.createProject("tsconfig.json");
+const project = gulpTS.createProject('tsconfig.json')
 
 gulp.task('build', () => {
-    del.sync(['./build/**/*.*']);
     const tsCompile = gulp.src('./src/**/*.ts')
+        .pipe(gulpCached('./build/'))
         .pipe(gulpSourcemaps.init())
-        .pipe(project());
+        .pipe(project())
 
-    return tsCompile.js.pipe(gulpSourcemaps.write({
-        sourceRoot: file => path.relative(path.join(file.cwd, file.path), file.base)
-    }))
-    .pipe(gulp.dest('./build/'));
+    tsCompile.dts.pipe(gulp.dest('./build/'))
+
+    return tsCompile.js
+        .pipe(gulpSourcemaps.write('.'))
+        .pipe(gulp.dest('./build/'))
 });
 
 gulp.task('watch', gulp.series(['build'], () => {
@@ -32,7 +30,7 @@ gulp.task('start',gulp.series(['build'], () => {
     });
 }));
 
-gulp.task('serve', gulp.parallel(['watch'], () => {
+gulp.task('dev', gulp.parallel(['watch'], () => {
     return gulpNodemon({
         script: './build/index.js',
         watch: './build/'

@@ -21,10 +21,10 @@ export default class UserInfoCommand extends SeraphaeCommand {
     })
   }
 
-  run = (msg: CommandoMessage, { user }) => {
+  run = async (msg: CommandoMessage, { user }) => {
     // console.log(msg.member)
     const { createdAt, discriminator, id, presence, tag } = user
-    const { joinedTimestamp, nickname, roles } = msg.member // need to fix
+    const { nickname, joinedTimestamp, roles } = await msg.guild.members.fetch(user.id)
 
     const statuses = [
       { name: 'online', fullname: 'Online', id: '709490984647393390'},
@@ -50,6 +50,6 @@ export default class UserInfoCommand extends SeraphaeCommand {
       ].join('\n'))
       .addField('**Roles**', roles.cache.filter(r => r.id !== msg.guild.id).map(x => x).join(' ') || 'No roles')
 
-    return msg.embed(embed)
+    return msg.say(embed)
   }
 }

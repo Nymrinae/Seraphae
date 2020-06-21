@@ -15,9 +15,7 @@ export default class TestCommand extends SeraphaeCommand {
 
   // @ts-ignore
   run = async (msg: CommandoMessage) => {
-    this.client.emit('guildMemberAdd', msg.member)
-    this.client.emit('guildMemberRemove', msg.member)
-    this.client.emit('guildBanAdd', msg.guild, msg.author)
-    this.client.emit('guildBanRemove', msg.guild, msg.author)
+    this.client.emit('guildCreate', msg.guild)
+    this.client.emit('guildDelete', msg.guild)
   }
 }

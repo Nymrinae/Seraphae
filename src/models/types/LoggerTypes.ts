@@ -1,7 +1,9 @@
 export type LoggerOptions = {
-  userLog: string,
+  guildLog: string,
   msgLog: string,
-  modLog: string
+  modLog: string,
+  userLog: string,
+  
 }
 
 export enum memberUpdateType {

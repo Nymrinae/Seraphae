@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('custom-env').env(true)
 
 import Seraphae from './core/Client'
 import { Structures } from 'discord.js'
