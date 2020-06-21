@@ -9,6 +9,6 @@ export default class ReadyEvent {
 
   public run = (): void => {
     console.log('Seraphae started!')
-    this.client.user.setActivity('Bambou44 FTW')
+    this.client.user.setActivity(`${this.client.commandPrefix}help`, { type: 'LISTENING' })
   }
 }

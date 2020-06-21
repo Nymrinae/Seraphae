@@ -51,7 +51,6 @@ export default class PlayCommand extends SeraphaeCommand {
           videoEmbed.addField('Next song:', queue[1].title)
         msg.say(videoEmbed)
         msg.guild.musicData.nowPlaying = queue[0]
-        this.client.user.setActivity(`${queue[0].title}`, { type: 'LISTENING' })
 
         return queue.shift()
       })
@@ -60,14 +59,12 @@ export default class PlayCommand extends SeraphaeCommand {
           return this.playSong(queue, msg)
         } else {
           msg.guild.musicData.isPlaying = false
-          this.client.user.setActivity('Ciaossu!')
 
           return voiceChannel.leave()
         }
       })
       .on('end', () => {
         msg.guild.musicData.queue.length = 0
-        this.client.user.setActivity(`Ciaossu!`, { type: 'LISTENING' })
 
         return voiceChannel.leave()
       })
