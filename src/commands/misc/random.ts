@@ -1,8 +1,9 @@
 import { CommandoMessage, CommandoClient } from 'discord.js-commando'
 import SeraphaeCommand from '../../core/Command'
+import Seraphae from '../../core/Client'
 
 export default class RandomCommand extends SeraphaeCommand {
-  constructor(client: CommandoClient) {
+  constructor(client: Seraphae) {
     super(client, {
       name: 'random',
       group: 'miscellaneous',

@@ -3,9 +3,10 @@ import { MessageEmbed, TextChannel } from 'discord.js'
 import SeraphaeCommand from '../../core/Command'
 
 import { addPluralForm } from '../../helpers/functions'
+import Seraphae from '../../core/Client'
 
 export default class ServerInfoCommand extends SeraphaeCommand {
-  constructor(client: any) {
+  constructor(client: Seraphae) {
     super(client, {
       name: 'serverinfo',
       aliases: ['si'],

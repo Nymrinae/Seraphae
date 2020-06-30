@@ -1,9 +1,10 @@
 import { CommandoMessage } from 'discord.js-commando'
 import { MessageEmbed } from 'discord.js'
 import SeraphaeCommand from '../../core/Command'
+import Seraphae from '../../core/Client'
 
 export default class CurrentCommand extends SeraphaeCommand {
-  constructor(client: any) {
+  constructor(client: Seraphae) {
     super(client, {
       name: 'current',
       aliases: ['currentsong'],

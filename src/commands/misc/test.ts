@@ -1,6 +1,7 @@
 import { CommandoMessage } from 'discord.js-commando'
 import Seraphae from '../../core/Client'
 import SeraphaeCommand from '../../core/Command'
+
 export default class TestCommand extends SeraphaeCommand {
   constructor(client: Seraphae) {
     super(client, {
@@ -15,7 +16,8 @@ export default class TestCommand extends SeraphaeCommand {
 
   // @ts-ignore
   run = async (msg: CommandoMessage) => {
-    this.client.emit('guildCreate', msg.guild)
-    this.client.emit('guildDelete', msg.guild)
+    const { hello } = (this.client as Seraphae).i18n
+
+    return msg.say(hello)
   }
 }

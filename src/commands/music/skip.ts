@@ -1,8 +1,9 @@
 import { CommandoMessage } from 'discord.js-commando'
 import SeraphaeCommand from '../../core/Command'
+import Seraphae from '../../core/Client'
 
 export default class SkipCommand extends SeraphaeCommand {
-  constructor(client: any) {
+  constructor(client: Seraphae) {
     super(client, {
       name: 'skip',
       group: 'music',

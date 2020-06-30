@@ -1,9 +1,10 @@
 import { CommandoMessage } from 'discord.js-commando'
 import SeraphaeCommand from '../../core/Command'
 import { MessageEmbed } from 'discord.js'
+import Seraphae from '../../core/Client'
 
 export default class KickCommand extends SeraphaeCommand {
-  constructor(client: any) {
+  constructor(client: Seraphae) {
     super(client, {
       name: 'mute',
       group: 'moderation',

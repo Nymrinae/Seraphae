@@ -31,4 +31,5 @@ const client = new Seraphae({
 })
 
 client.setLogger()
+client.configurei18n()
 client.login(botConfig.token)

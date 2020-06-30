@@ -1,9 +1,10 @@
 import { CommandoMessage, CommandoClient } from 'discord.js-commando'
 import { MessageEmbed } from 'discord.js'
 import SeraphaeCommand from '../../core/Command'
+import Seraphae from '../../core/Client'
 
 export default class AvatarCommand extends SeraphaeCommand {
-  constructor(client: CommandoClient) {
+  constructor(client: Seraphae) {
     super(client, {
       name: 'avatar',
       group: 'information',
@@ -22,7 +23,7 @@ export default class AvatarCommand extends SeraphaeCommand {
   run = (msg: CommandoMessage, { user }) => {
     const embed = new MessageEmbed()
       .setTitle(`${user.tag}'s avatar`)
-      .setImage(user.displayAvatarURL())
+      .setImage(`${user.displayAvatarURL()}?size=256`.replace('webp', 'gif'))
 
     return msg.embed(embed)
   }

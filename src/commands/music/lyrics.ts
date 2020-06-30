@@ -4,10 +4,11 @@ import cheerio from 'cheerio'
 import { MessageEmbed } from 'discord.js'
 
 import SeraphaeCommand from '../../core/Command'
-
+import Seraphae from '../../core/Client'
 
 export default class LyricsCommand extends SeraphaeCommand {
-  constructor(client: any) {
+  constructor(client: Seraphae) {
+
     super(client, {
       name: 'lyrics',
       group: 'music',

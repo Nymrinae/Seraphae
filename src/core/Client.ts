@@ -7,6 +7,7 @@ import { fr, en } from '../locales'
 
 export default class Seraphae extends CommandoClient {
   public logger: Logger
+  public i18n: any
 
   constructor(options: CommandoClientOptions) {
     super(options)
@@ -51,16 +52,9 @@ export default class Seraphae extends CommandoClient {
 
   public setLogger = (): Logger => this.logger = new Logger(this)
 
-  /* public configureI18n = (): void => {
-    const i18n = {
-      fr,
-      en,
-      default: 'en'
-    }
-
-    this.client.i18n = new I18nResolver(i18n, i18n.default).translation
-  } */
-  public test = () => `test`
+  public configurei18n = (): void => {
+    this.i18n = new I18nResolver({ fr, en, default: en }, 'en').translation
+  }
 
   public login = (token: string): Promise<string> => super.login(token)
 }

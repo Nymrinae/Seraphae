@@ -5,13 +5,14 @@ import { MessageEmbed, Message, MessageReaction, User } from 'discord.js'
 import { decodeHTMLEntities } from '../../helpers/functions'
 
 import SeraphaeCommand from '../../core/Command'
+import Seraphae from '../../core/Client'
 
 export default class PlayCommand extends SeraphaeCommand {
   private youtube: Youtube
   private query: any
   private msg: CommandoMessage
 
-  constructor(client: CommandoClient) {
+  constructor(client: Seraphae) {
     super(client, {
       name: 'play',
       group: 'music',
