@@ -1,0 +1,38 @@
+{
+  "name": "seraphae-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index",
+  "scripts": {
+    "dev": "npx factor dev",
+    "start": "npx factor start"
+  },
+  "private": true,
+  "dependencies": {
+    "@factor/core": "^1.0.0",
+    "@factor/plugin-contact-form": "^1.0.0",
+    "@factor/plugin-notify": "^1.0.0",
+    "@factor/plugin-seo": "^1.0.0",
+    "@factor/plugin-sitemap": "^1.0.0",
+    "@factor/plugin-storage-s3": "^1.0.0",
+    "@factor/theme-alpha": "^1.8.14",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0"
+  },
+  "factor": {
+    "app": {
+      "name": "Seraphae Website",
+      "description": "Website for Seraphae"
+    },
+    "admins": [
+      "nymrinaedev@gmail.com"
+    ],
+    "load": [
+      "app",
+      "server"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.14"
+  }
+}

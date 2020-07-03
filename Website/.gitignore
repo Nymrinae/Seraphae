@@ -1,0 +1,31 @@
+# Factor
+**/dist
+**/.factor
+
+# Ignore Mac system files
+.DS_store
+
+# Ignore node_modules folder
+node_modules
+**/node_modules
+
+# Ignore files related to API keys
+.env
+**/**.env
+report*
+
+# Ignore SASS config files
+.sass-cache
+
+# Logs
+*.log
+
+# Local SSL
+rootCA.key
+rootCA.pem
+rootCA.srl
+server.crt
+server.key
+server.csr
+server.csr.cnf
+v3.ext
